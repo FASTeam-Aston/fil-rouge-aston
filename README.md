@@ -24,5 +24,12 @@ user : sof  - password : iQGQjixZbX394672
 
 `sudo useradd -d /home/sof -s /bin/bash -G sudo -p $(mkpasswd -H md5 iQGQjixZbX394672) -m sof`
 
+
 ### Python version test
 `python3 --version`
+
+### Install Flask
+``pip install Flask``
+
+### Install vitualenv
+`sudo apt-get install python-virtualenv`

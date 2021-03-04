@@ -20,3 +20,11 @@ password: js4f150Q6Uivbr51
 `sudo useradd -d /home/fred -s /bin/bash -G sudo -p $(mkpasswd -H md5 6psELH9Ze9cdB596) -m fred`
 
 `sudo useradd -d /home/sof -s /bin/bash -G sudo -p $(mkpasswd -H md5 iQGQjixZbX394672) -m sof`
+
+### Install Python3
+
+### Install Flask
+``pip install Flask``
+
+### Install vitualenv
+`sudo apt-get install python-virtualenv`

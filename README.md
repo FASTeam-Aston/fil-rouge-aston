@@ -27,9 +27,10 @@ user : sof  - password : iQGQjixZbX394672
 
 ### Python version test
 `python3 --version`
+--> Python 3.8.5
 
 ### Install Flask
-``pip install Flask``
+`pip install Flask`
 
 ### Install vitualenv
 `sudo apt-get install python-virtualenv`

@@ -3,9 +3,9 @@
 ### VM's INFORMATIONS
 hostname : fil-rouge-aston-5    \
 ip : 51.254.227.51              \
+ip ssh : ssh.exelander.fr       \
 user : ubuntu                   \
 password : js4f150Q6Uivbr51
-
 user : alex - password : 7Zi23eY6VRuX52us   --> change in personnal passaword     \
 user : fred - password : 6psELH9Ze9cdB596        \
 user : sof  - password : iQGQjixZbX394672

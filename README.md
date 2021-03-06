@@ -17,7 +17,7 @@ user : sof  - password : iQGQjixZbX394672
 `sudo apt install whois` #use for mkpasswd
 `sudo apt install apt-transport-https ca-certificates curl software-properties-common`
 
-## Docker-cd installation
+### docker-ce installation
 `sudo apt update
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
@@ -37,6 +37,8 @@ sudo apt install docker-ce`
 ### Virtual environnement installation for Python3
 `sudo apt update && sudo apt install python3-venv`
 
+
 ### Virtual environnement implementation
+`cd <app_folder>`
 `python3 -m venv venv`
 

@@ -17,6 +17,14 @@ user : sof  - password : iQGQjixZbX394672
 `sudo apt install whois` #use for mkpasswd
 `sudo apt install apt-transport-https ca-certificates curl software-properties-common`
 
+## Docker-cd installation
+`sudo apt update
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+sudo apt update
+sudo apt install docker-ce`
+
+
 ### Add 3 new users with sudo
 
 `sudo useradd -d /home/alex -s /bin/bash -G sudo -p $(openssl passwd -6 -salt xyz 7Zi23eY6VRuX52us) -m alex`
@@ -26,13 +34,9 @@ user : sof  - password : iQGQjixZbX394672
 `sudo useradd -d /home/sof -s /bin/bash -G sudo -p $(openssl passwd -6 -salt xyz iQGQjixZbX394672) -m sof`
 
 
-### Python version test
-`python3 --version`
---> Python 3.8.5
+### Virtual environnement installation for Python3
+`sudo apt update && sudo apt install python3-venv`
 
-## Docker-cd installation
-`sudo apt update
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
-sudo apt update
-sudo apt install docker-ce`
+### Virtual environnement implementation
+`python3 -m venv venv`
+

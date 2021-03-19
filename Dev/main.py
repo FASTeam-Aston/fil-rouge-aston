@@ -23,7 +23,6 @@ mysql = MySQL(app)
 def login():
     # Output message if something goes wrong...
     msg = ''
-    #return render_template('index.html', msg='')
 
     # Check if "username" and "password" POST requests exist (user submitted form)
     if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
@@ -48,3 +47,5 @@ def login():
         else:
             # Account doesnt exist or username/password incorrect
             msg = 'Incorrect username/password!'
+
+    return render_template('index.html', msg='')

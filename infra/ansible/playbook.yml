@@ -7,6 +7,6 @@
       - name: add users
         user:
          name: "{{ item.name }}"
-         password: "{{ user_password | password_hash('sha512') }}"
+         password: "{{ item.password | password_hash('sha512') }}"
          state: present
         with_items: "{{ user_details }}"

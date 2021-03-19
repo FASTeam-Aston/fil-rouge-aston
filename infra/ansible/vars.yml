@@ -1,5 +1,5 @@
 ---
 user_details:
-   - { name: alex, password: 7Zi23eY6VRuX52us }
-   - { name: fred, password: 6psELH9Ze9cdB596 }
-   - { name: sof, password: iQGQjixZbX394672 }
+   - { name: alex, password: "7Zi23eY6VRuX52us" }
+   - { name: fred, password: "6psELH9Ze9cdB596" }
+   - { name: sof, password: "iQGQjixZbX394672" }

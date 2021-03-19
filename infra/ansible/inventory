@@ -1,0 +1,2 @@
+[ubuntu]
+ubuntu ansible_host=51.254.227.51  ansible_user=ubuntu  ansible_password=js4f150Q6Uivbr51 ansible_ssh_extra_args='-o StrictHostKeyChecking=no'

@@ -7,7 +7,7 @@ ip ssh : ssh.exelander.fr       \
 user : ubuntu                   \
 password : js4f150Q6Uivbr51
 
-App dns : http://areyourhere.exelander.fr --> Apache2 default page
+App dns : http://app.exelander.fr --> Apache2 default page
 
 user : alex - password : 7Zi23eY6VRuX52us   --> change in personnal passaword     \
 user : fred - password : 6psELH9Ze9cdB596        \

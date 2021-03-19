@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 # $ pip install flask-mysqldb
-from flask_mysqldb import MySQL
+from flask_mysqldb import MySQLgit
 import MySQLdb.cursors
 import re
 

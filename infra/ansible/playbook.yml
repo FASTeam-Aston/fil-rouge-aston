@@ -2,7 +2,7 @@
 - hosts: all
   become: true
   vars_files:
-      - /etc/ansible/vars.yml
+      - ./vars.yml
   tasks:
       - name: add users
         user:

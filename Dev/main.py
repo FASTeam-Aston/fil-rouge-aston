@@ -6,6 +6,8 @@ import MySQLdb.cursors
 
 app = Flask(__name__)
 
+app.secret_key = 'la vie est un long fleuve tranquille'
+
 # Entrez les détails de votre connexion à la base de données ci-dessous
 app.config['MYSQL_HOST'] = '51.254.227.51'
 app.config['MYSQL_USER'] = 'pma'

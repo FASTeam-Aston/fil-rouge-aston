@@ -29,7 +29,6 @@ def login():
 
         # Check if account exists using MySQL
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        mysql.connection.cursor(MySQLdb.c)
         cursor.execute('SELECT * FROM FORMATEUR WHERE email = %s AND password = %s', (username, password,))
         # Fetch one record and return result
         account = cursor.fetchone()

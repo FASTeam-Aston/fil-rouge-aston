@@ -5,31 +5,24 @@
       - ./vars.yml
 
   tasks:
-      - name: add users
-        user:
-         name: "{{ item.name }}"
-         password: "{{ item.password | password_hash('sha512') }}"
-         state: present
-        with_items: "{{ user_details }}"
+    - name: add users
+      user:
+        name: "{{ item.name }}"
+        password: "{{ item.password | password_hash('sha512') }}"
+        state: present
+      with_items: "{{ user_details }}"
 
-      - name: Install required system packages
-        apt: name={{ item }} state=latest update_cache=yes
-        with_items:
-          - apt-transport-https
-          - ca-certificates
-          - curl
-          - software-properties-common
-          - python3-pip
+    - name: Install required system packages
+      apt:
+        name: ['apt-transport-https','ca-certificates','curl','software-properties-common','python3-pip']
+        state: latest
+        update_cache: yes
 
-      - name: Add Docker GPG apt Key
-        apt_key:
-          url: https://download.docker.com/linux/ubuntu/gpg
-          state: present
+    - name: Docker Install
+      include_tasks: ./docker.yaml
 
-      - name: Add Docker Repository
-        apt_repository:
-          repo: deb https://download.docker.com/linux/ubuntu focal stable
-          state: present
+    - name: Apache Install
+      include_tasks: ./apache2.yaml
 
-      - name: Update apt and install docker-ce
-        apt: name= docker-ce state=latest update_cache=yes
+    - name: Certbot Install
+      include_tasks: ./certbot.yaml

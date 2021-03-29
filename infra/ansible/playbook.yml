@@ -5,7 +5,7 @@
       - ./vars.yml
 
   tasks:
-    - name: add users
+    - name: add users #(passwords to vaults)
       user:
         name: "{{ item.name }}"
         password: "{{ item.password | password_hash('sha512') }}"

@@ -1,17 +1,5 @@
 # fil-rouge-aston
 
-### VM's INFORMATIONS
-hostname : fil-rouge-aston-5    \
-ip : 51.254.227.51              \
-ip ssh : ssh.exelander.fr       \
-user : ubuntu                   \
-password : js4f150Q6Uivbr51
-
-App dns : http://app.exelander.fr --> Apache2 default page
-
-user : alex - password : 7Zi23eY6VRuX52us   --> change in personnal passaword     \
-user : fred - password : 6psELH9Ze9cdB596        \
-user : sof  - password : iQGQjixZbX394672
 
 ### update apt
 `sudo apt update`
@@ -40,13 +28,6 @@ sudo apt install docker-ce`
 sudo apt install apache2
 
 ### Add 3 new users with sudo
-
-`sudo useradd -d /home/alex -s /bin/bash -G sudo -p $(openssl passwd -6 -salt xyz 7Zi23eY6VRuX52us) -m alex`
-
-`sudo useradd -d /home/fred -s /bin/bash -G sudo -p $(openssl passwd -6 -salt xyz 6psELH9Ze9cdB596) -m fred`
-
-`sudo useradd -d /home/sof -s /bin/bash -G sudo -p $(openssl passwd -6 -salt xyz iQGQjixZbX394672) -m sof`
-
 
 ### Virtual environnement installation for Python3
 `sudo apt update && sudo apt install python3-venv`

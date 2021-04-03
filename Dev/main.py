@@ -1,8 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, session
-# $ pip install flask-mysqldb
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
-# import re
 
 app = Flask(__name__)
 
@@ -24,14 +22,14 @@ def login():
     msg = ''
 
     # Check if "username" and "password" POST requests exist (user submitted form)
-    if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
+    if request.method == 'POST' and 'email' in request.form and 'password' in request.form:
         # Create variables for easy access
-        username = request.form['username']
+        email = request.form['email']
         password = request.form['password']
 
         # Check if account exists using MySQL
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        cursor.execute('SELECT * FROM FORMATEUR WHERE email = %s AND password = %s', (username, password,))
+        cursor.execute('SELECT * FROM FORMATEUR WHERE email = %s AND password = %s', (email, password,))
         # Fetch one record and return result
         account = cursor.fetchone()
 
@@ -39,22 +37,22 @@ def login():
         if account:
             # Create session data, we can access this data in other routes
             session['loggedin'] = True
-            session['id'] = account['id']
+            session['Id_Formateur'] = account['Id_Formateur']
             session['email'] = account['email']
             # Redirect to home page
-            return 'Logged in successfully!'
+            return redirect(url_for('home'))
         else:
             # Account doesnt exist or username/password incorrect
             msg = 'Incorrect email/password!'
 
-    return render_template('index.html', msg='')
+    return render_template('index.html', msg=msg)
 
 # http://localhost:5000/logout - this will be the logout page
 @app.route('/logout')
 def logout():
     # Remove session data, this will log the user out
    session.pop('loggedin', None)
-   session.pop('id', None)
+   session.pop('Id_Formateur', None)
    session.pop('email', None)
    # Redirect to login page
    return redirect(url_for('login'))
@@ -76,7 +74,7 @@ def profile():
     if 'loggedin' in session:
         # We need all the account info for the user so we can display it on the profile page
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        cursor.execute('SELECT * FROM FORMATEUR WHERE id = %s', (session['id'],))
+        cursor.execute('SELECT * FROM FORMATEUR WHERE Id_Formateur = %s', (session['Id_Formateur'],))
         account = cursor.fetchone()
         # Show the profile page with account info
         return render_template('profile.html', account=account)

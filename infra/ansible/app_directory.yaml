@@ -5,9 +5,11 @@
     dest: /home/adminsys
     owner: adminsys
     group: adminsys
+    remote_src: yes
 
   copy:
     src: ../../Dev
     dest: /home/adminsys
     owner: adminsys
     group: adminsys
+    remote_src: yes

@@ -14,3 +14,8 @@
     name: adminsys
     groups: docker, sudo, adminsys
     append: yes
+
+- name: Add Docker-compose
+  shell: |
+    curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-Linux-x86_64" -o /usr/local/bin/docker-compose
+    sudo chmod +x /usr/local/bin/docker-compose

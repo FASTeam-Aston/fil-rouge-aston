@@ -1,7 +1,13 @@
 ---
-- name: Add App Directory for Docker-Compose
+- name: Add App Directories for Docker-Compose
   copy:
     src: ../docker
+    dest: /home/adminsys
+    owner: adminsys
+    group: adminsys
+
+  copy:
+    src: ../../Dev
     dest: /home/adminsys
     owner: adminsys
     group: adminsys

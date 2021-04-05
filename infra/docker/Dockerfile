@@ -2,7 +2,7 @@ FROM ubuntu
 
 RUN apt-get update && apt-get -y install python3 python3-pip nano iputils-ping python3-mysqldb apache2 libapache2-mod-wsgi-py3
 
-WORKDIR ../../Dev
+WORKDIR ../Dev
 
 COPY ./ /home/Flask_app
 

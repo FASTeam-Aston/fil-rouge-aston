@@ -1,23 +1,25 @@
+version: '3'
+
 networks:
-  lan_network:
+  app_network:
     driver: bridge
 
 services:
   areyouhere_app:
-      hostname: app
-      #image: aderesnes/app:flaskapp
-      build: .
-      ports:
-        - 5000:5000
-      links:
-        - dbm:mysql
-      depends_on:
-        - dbm
-      networks:
-        -  lan_network
+    hostname: areyouhere_app
+    #image: aderesnes/app:flaskapp
+    build: .
+    ports:
+      - 5000:5000
+    links:
+      - dbm:mysql
+    depends_on:
+      - dbm
+    networks:
+      - app_network
 
   phpmyadmin:
-    hostname: phpmyadmin
+    hostname: areyouhere_pma
     image: aderesnes/app:phpmyadmin
     links:
       - dbm:mysql
@@ -26,10 +28,10 @@ services:
     ports:
       - 8081:80
     environment:
-      MYSQL_USERNAME: pam
+      MYSQL_USERNAME: root
       MYSQL_ROOT_PASSWORD: aka47-Adminsys
     networks:
-      - lan_network
+      - app_network
 
   dbm:
     hostname: mysql
@@ -42,4 +44,4 @@ services:
     ports:
       - 3306:3306
     networks:
-      -  lan_network
+      - app_network

@@ -8,23 +8,25 @@ services:
   areyouhere_app:
     hostname: areyouhere_app
     #image: aderesnes/app:flaskapp
+    restart: always
     build: .
     ports:
       - 5000:5000
     links:
-      - dbm:mysql
+      - db:mysql
     depends_on:
-      - dbm
+      - db
     networks:
       - app_network
 
-  phpmyadmin:
+  pma:
     hostname: areyouhere_pma
     image: aderesnes/app:phpmyadmin
+    restart: always
     links:
-      - dbm:mysql
+      - db:mysql
     depends_on:
-      - dbm
+      - db
     ports:
       - 8081:80
     environment:
@@ -33,9 +35,10 @@ services:
     networks:
       - app_network
 
-  dbm:
+  db:
     hostname: mysql
     image: aderesnes/app:mysql5.6
+    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: aka47-Adminsys
     volumes:

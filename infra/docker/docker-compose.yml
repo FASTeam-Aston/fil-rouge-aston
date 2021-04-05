@@ -1,0 +1,47 @@
+version: '1.0'
+
+networks:
+  lan_network:
+    driver: bridge
+
+services:
+  areyouhere_app:
+      hostname: app
+      #image: aderesnes/app:flaskapp
+      build: .
+      ports:
+        - 5000:5000
+      links:
+        - dbm:mysql
+      depends_on:
+        - dbm
+      networks:
+        -  lan_network
+
+  phpmyadmin:
+    hostname: phpmyadmin
+    image: aderesnes/app:phpmyadmin
+    links:
+      - dbm:mysql
+    depends_on:
+      - dbm
+    ports:
+      - 8081:80
+    environment:
+      MYSQL_USERNAME: pam
+      MYSQL_ROOT_PASSWORD: aka47-Adminsys
+    networks:
+      - lan_network
+
+  dbm:
+    hostname: mysql
+    image: aderesnes/app:mysql5.6
+    environment:
+      MYSQL_ROOT_PASSWORD: aka47-Adminsys
+    volumes:
+      - /var/log/mysql-db:/var/log/mysql
+      - /var/lib/mysql:/var/lib/mysql
+    ports:
+      - 3306:3306
+    networks:
+      -  lan_network

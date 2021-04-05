@@ -1,5 +1,3 @@
-version: '1.0'
-
 networks:
   lan_network:
     driver: bridge

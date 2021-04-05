@@ -5,8 +5,8 @@ networks:
     driver: bridge
 
 services:
-  areyouhere_app:
-    hostname: areyouhere_app
+  app:
+    hostname: app
     #image: aderesnes/app:flaskapp
     restart: always
     build: .
@@ -20,7 +20,7 @@ services:
       - app_network
 
   pma:
-    hostname: areyouhere_pma
+    hostname: pma
     image: aderesnes/app:phpmyadmin
     restart: always
     links:

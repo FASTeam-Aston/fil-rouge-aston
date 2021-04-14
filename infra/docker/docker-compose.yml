@@ -30,6 +30,9 @@ services:
     ports:
       - 8081:80
     environment:
+      MYSQL_DATABASE: areyouhere
+      MYSQL_USER: pma
+      MYSQL_PASSWORD: aka47-Pma
       MYSQL_USERNAME: root
       MYSQL_ROOT_PASSWORD: aka47-Adminsys
     networks:
@@ -44,6 +47,7 @@ services:
     volumes:
       - /var/log/mysql-db:/var/log/mysql
       - /var/lib/mysql:/var/lib/mysql
+      - ./mysql:/docker-entrypoint-initdb.d
     ports:
       - 3306:3306
     networks:

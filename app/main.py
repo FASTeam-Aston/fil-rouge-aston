@@ -91,20 +91,20 @@ def Student_attendance_chart():
 def user_attendance_chart():
     allUser = [
         {
-            "firstname": "Ford",
-            "lastname": "Mustang",
+            "firstname": "Test1",
+            "lastname": "lastname1",
         },
         {
-            "firstname": "Ford",
-            "lastname": "Mustang",
+            "firstname": "Test2",
+            "lastname": "lastname2",
         },
         {
-            "firstname": "Ford",
-            "lastname": "Mustang",
+            "firstname": "Test3",
+            "lastname": "lastname3",
         },
         {
-            "firstname": "Ford",
-            "lastname": "Mustang",
+            "firstname": "Test4",
+            "lastname": "lastname4",
         }
     ]
     return render_template('user.html', users=allUser, len=len(allUser))

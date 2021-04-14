@@ -80,3 +80,30 @@ def profile():
         return render_template('profile.html', account=account)
     # User is not loggedin redirect to login page
     return redirect(url_for('login'))
+
+@app.route('/userhome')
+def Student_attendance_chart():
+    return render_template('Student_attendance_chart.html')
+
+
+@app.route('/user')
+def user_attendance_chart():
+    allUser = [
+        {
+            "firstname": "Ford",
+            "lastname": "Mustang",
+        },
+        {
+            "firstname": "Ford",
+            "lastname": "Mustang",
+        },
+        {
+            "firstname": "Ford",
+            "lastname": "Mustang",
+        },
+        {
+            "firstname": "Ford",
+            "lastname": "Mustang",
+        }
+    ]
+    return render_template('user.html', users=allUser, len=len(allUser))

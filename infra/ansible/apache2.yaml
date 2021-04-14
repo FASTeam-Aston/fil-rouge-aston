@@ -4,3 +4,11 @@
     name: apache2
     state: latest
     update_cache: yes
+
+#- name: Add Apache vhost
+#  copy:
+#    src: ./apache/dev.conf
+#    dest: /etc/apache2/sites-available/
+
+#- name: Active the vhost
+#  run: a2ensite dev.conf

@@ -110,3 +110,4 @@ def user_attendance_chart():
     return render_template('user.html', users=allUser, len=len(allUser))
 
 # On va avoir un conflit ici !!!
+# on test réellement le conflit ici

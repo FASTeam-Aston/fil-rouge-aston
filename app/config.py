@@ -1,0 +1,7 @@
+MYSQL_DB = "areyouhere"
+MYSQL_HOST = "localhost"
+MYSQL_USER = "frederic"
+MYSQL_PASSWORD = "poiupoiu"
+#MYSQL_HOST = "51.254.227.51"
+#MYSQL_USER = "pma"
+#MYSQL_PASSWORD = "aka47-Pma"

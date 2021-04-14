@@ -1,0 +1,54 @@
+version: '3'
+
+networks:
+  app_network:
+    driver: bridge
+
+services:
+  app:
+    hostname: app
+    #image: aderesnes/app:flaskapp
+    restart: always
+    build: .
+    ports:
+      - 5000:5000
+    links:
+      - db:mysql
+    depends_on:
+      - db
+    networks:
+      - app_network
+
+  pma:
+    hostname: pma
+    image: aderesnes/app:phpmyadmin
+    restart: always
+    links:
+      - db:mysql
+    depends_on:
+      - db
+    ports:
+      - 8081:80
+    environment:
+      MYSQL_DATABASE: areyouhere
+      MYSQL_USER: pma
+      MYSQL_PASSWORD: aka47-Pma
+      MYSQL_USERNAME: root
+      MYSQL_ROOT_PASSWORD: aka47-Adminsys
+    networks:
+      - app_network
+
+  db:
+    hostname: mysql
+    image: aderesnes/app:mysql5.6
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: aka47-Adminsys
+    volumes:
+      - /var/log/mysql-db:/var/log/mysql
+      - /var/lib/mysql:/var/lib/mysql
+      - ./mysql:/docker-entrypoint-initdb.d
+    ports:
+      - 3306:3306
+    networks:
+      - app_network

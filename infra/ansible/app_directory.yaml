@@ -1,0 +1,10 @@
+---
+- name: Add App Directories for Docker-Compose 1/2
+  copy:
+    src: ../docker
+    dest: /home/adminsys
+
+- name: Add App Directories for Docker-Compose 2/2
+  copy:
+    src: ../../Dev
+    dest: /home/adminsys/docker

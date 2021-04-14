@@ -7,9 +7,9 @@ app = Flask(__name__)
 app.secret_key = 'la vie est un long fleuve tranquille'
 
 # Entrez les détails de votre connexion à la base de données ci-dessous
-app.config['MYSQL_HOST'] = '51.254.227.51'
-app.config['MYSQL_USER'] = 'pma'
-app.config['MYSQL_PASSWORD'] = 'aka47-Pma'
+app.config['MYSQL_HOST'] = 'db'
+app.config['MYSQL_USER'] = 'areyouhere'
+app.config['MYSQL_PASSWORD'] = 'aka47-areyouhere'
 app.config['MYSQL_DB'] = 'areyouhere'
 
 # Intialize MySQL
@@ -29,7 +29,7 @@ def login():
 
         # Check if account exists using MySQL
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        cursor.execute('SELECT * FROM FORMATEUR WHERE email = %s AND password = %s', (email, password,))
+        cursor.execute('SELECT * FROM FORMATEUR WHERE email = %s AND password = password(%s)', (email, password,))
         # Fetch one record and return result
         account = cursor.fetchone()
 
@@ -80,3 +80,30 @@ def profile():
         return render_template('profile.html', account=account)
     # User is not loggedin redirect to login page
     return redirect(url_for('login'))
+
+@app.route('/userhome')
+def Student_attendance_chart():
+    return render_template('Student_attendance_chart.html')
+
+
+@app.route('/user')
+def user_attendance_chart():
+    allUser = [
+        {
+            "firstname": "Ford",
+            "lastname": "Mustang",
+        },
+        {
+            "firstname": "Ford",
+            "lastname": "Mustang",
+        },
+        {
+            "firstname": "Ford",
+            "lastname": "Mustang",
+        },
+        {
+            "firstname": "Ford",
+            "lastname": "Mustang",
+        }
+    ]
+    return render_template('user.html', users=allUser, len=len(allUser))

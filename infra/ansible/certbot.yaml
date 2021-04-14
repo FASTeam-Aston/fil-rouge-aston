@@ -1,6 +1,0 @@
----
-- name: Install Certbot for SSL in Apache
-  apt:
-    name: ['certbot','python3-certbot-apache']
-    state: latest
-    update_cache: yes

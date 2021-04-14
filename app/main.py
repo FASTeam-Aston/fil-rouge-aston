@@ -86,7 +86,7 @@ def profile():
 def Student_attendance_chart():
     return render_template('Student_attendance_chart.html')
 
-
+#table of students
 @app.route('/user')
 def user_attendance_chart():
     allUser = [

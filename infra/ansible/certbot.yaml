@@ -7,9 +7,9 @@
 
 - name: Check if certificate already exists.
   stat:
-    path: /etc/letsencrypt/live/"{{ domain_dev }}"/cert.pem
+    path: /etc/letsencrypt/live/{{ http_host }}/cert.pem
   register: letsencrypt_cert
 
 - name: Generate new certificate if one doesn't exist.
-  command: certbot run --apache --noninteractive --agree-tos --email "{{ domain_email }}" -d "{{ domain_dev }}" --redirect
+  command: certbot run --apache --noninteractive --agree-tos --email "{{ domain_email }}" -d "{{ http_host }}" --redirect
   when: not letsencrypt_cert.stat.exists

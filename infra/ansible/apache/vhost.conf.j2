@@ -1,6 +1,6 @@
 <VirtualHost *:80>
-    ServerName dev.exelander.fr
-    ServerAdmin postmaster@domaine.fr
+    ServerName {{ http_host }}
+    ServerAdmin {{ domain_email }}
 
     ProxyPass / http://localhost:5000/
     ProxyPassReverse / http://localhost:5000/

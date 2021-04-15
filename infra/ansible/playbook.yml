@@ -3,8 +3,9 @@
   become: true
   gather_facts: no
   vars_files:
-      - ./vars.yml
-      - ./users.yml
+      - ./vars/vars.yml
+      - ./vars/users.yml
+      - ./vars/credentials.yml
 
   tasks:
     - name: add users

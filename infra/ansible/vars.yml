@@ -1,4 +1,0 @@
----
-config_domains:
-   - { domain_dev: "dev.exelander.fr" }
-   - { domain_email: "alexandre.deresnes@social.aston-ecole.com" }

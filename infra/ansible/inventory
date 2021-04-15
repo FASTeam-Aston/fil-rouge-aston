@@ -1,4 +1,4 @@
 [production]
-VMubuntu ansible_host=51.254.227.51  ansible_user=ubuntu  ansible_password=Z3NewP@ssw0rd4Ubuntu ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
+VMubuntu ansible_host=51.254.227.51  ansible_user=ubuntu  ansible_password="{{ InventoryProdPassword }}" ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
 [testinterne]
-VMtestUbuntu ansible_host=192.168.0.46  ansible_user=adminsys  ansible_password=aka47-AdminSys ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
+VMtestUbuntu ansible_host=192.168.0.46  ansible_user=adminsys  ansible_password="{{ InventoryDevPassword }}" ansible_ssh_extra_args='-o StrictHostKeyChecking=no'

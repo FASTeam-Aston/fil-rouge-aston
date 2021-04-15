@@ -30,9 +30,9 @@ services:
     ports:
       - 8081:80
     environment:
-      MYSQL_ROOT_PASSWORD: aka47-AdminSys
+      MYSQL_ROOT_PASSWORD: "{{ MysqlRootPassword }}"
       MYSQL_USER: pma
-      MYSQL_PASSWORD: aka47-PmA
+      MYSQL_PASSWORD: "{{ MySqlPmaPassword }}"
     networks:
       - app_network
 
@@ -42,7 +42,7 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: aka47-AdminSys
+      MYSQL_ROOT_PASSWORD: "{{ MysqlRootPassword }}"
     volumes:
       - /var/log/mysql-db:/var/log/mysql
       - /var/lib/mysql:/var/lib/mysql

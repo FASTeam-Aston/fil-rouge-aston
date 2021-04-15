@@ -31,11 +31,14 @@
 
 - name: Add Apache vhost
   copy:
-    src: ./apache/dev.conf
+    src: ./apache/vhost.conf
     dest: /etc/apache2/sites-available/
 
-- name: a2ensite dev.conf
-  command: a2ensite dev.conf
+- name: Rename vhost
+  command: mv /etc/apache2/sites-available/vhost.conf /etc/apache2/sites-available/"{{ domain_dev }}".conf
+
+- name: a2ensite "{{ domain_dev }}".conf
+  command: a2ensite "{{ domain_dev }}".conf
 
 - name: restart apache2
   service:

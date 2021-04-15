@@ -37,7 +37,7 @@
 - name: Rename vhost
   command: mv /etc/apache2/sites-available/vhost.conf /etc/apache2/sites-available/"{{ domain_dev }}".conf
 
-- name: a2ensite "{{ domain_dev }}".conf
+- name: a2ensite {{ domain_dev }}.conf
   command: a2ensite "{{ domain_dev }}".conf
 
 - name: restart apache2

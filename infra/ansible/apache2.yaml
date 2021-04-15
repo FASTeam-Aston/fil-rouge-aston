@@ -30,16 +30,12 @@
     force: True
 
 - name: Add Apache vhost
-  copy:
-    src: ./apache/vhost.conf.j2
-    dest: /etc/apache2/sites-available/{{ http_conf }}
+  template:
+    src: "./apache/vhost.conf.j2"
+    dest: "/etc/apache2/sites-available/{{ http_conf }}"
 
-- name: Rename vhost
-  command: mv /etc/apache2/sites-available/vhost.conf /etc/apache2/sites-available/{{ http_conf }}.conf
-
-
-- name: a2ensite {{ http_conf }}.conf
-  command: a2ensite {{ http_conf }}.conf
+- name: a2ensite {{ http_conf }}
+  command: a2ensite {{ http_conf }}
 
 - name: restart apache2
   service:

@@ -6,6 +6,7 @@
       - ./vars/apachehttps.yml
       - ./vars/users.yml
       - ./vars/credentials.yml
+      - ./vars/default.yml
 
   tasks:
     - name: add users

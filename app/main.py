@@ -57,8 +57,14 @@ def logout():
 def home():
     # Check if user is loggedin
     if 'loggedin' in session:
-        # User is loggedin show them the home page
-        return render_template('home.html', email=session['email'])
+        # We need all the account info for the user so we can display it on the home page
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute('SELECT FORMATEUR.*, FORMATION.* FROM FORMATEUR, FORMATION '
+                       'WHERE FORMATION.Id_Formateur = FORMATEUR.Id_Formateur AND FORMATEUR.Id_Formateur = %s '
+                       'ORDER BY FORMATION.Date_debut',
+                       (session['Id_Formateur'],))
+        account = cursor.fetchall()
+        return render_template('home.html', account=account)
     # User is not loggedin redirect to login page
     return redirect(url_for('login'))
 

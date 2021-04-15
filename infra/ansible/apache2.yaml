@@ -5,10 +5,39 @@
     state: latest
     update_cache: yes
 
-#- name: Add Apache vhost
-#  copy:
-#    src: ./apache/dev.conf
-#    dest: /etc/apache2/sites-available/
+- name: enabled mod rewrite
+  apache2_module:
+    state: present
+    name: rewrite
+    force: True
 
-#- name: Active the vhost
-#  run: a2ensite dev.conf
+- name: enabled mod proxy
+  apache2_module:
+    state: present
+    name: proxy
+    force: True
+
+- name: enabled mod proxy_http
+  apache2_module:
+    state: present
+    name: proxy_http
+    force: True
+
+- name: enabled mod SSL
+  apache2_module:
+    state: present
+    name: ssl
+    force: True
+
+- name: Add Apache vhost
+  copy:
+    src: ./apache/dev.conf
+    dest: /etc/apache2/sites-available/
+
+- name: a2ensite dev.conf
+  command: a2ensite dev.conf
+
+- name: restart apache2
+  service:
+    name: apache2
+    state: restarted

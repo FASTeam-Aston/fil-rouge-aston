@@ -4,3 +4,12 @@
     name: ['certbot','python3-certbot-apache']
     state: latest
     update_cache: yes
+
+- name: Check if certificate already exists.
+  stat:
+    path: /etc/letsencrypt/live/dev.exelander.fr/cert.pem
+  register: letsencrypt_cert
+
+- name: Generate new certificate if one doesn't exist.
+  command: certbot run --apache --noninteractive --agree-tos --email alexandre.deresnes@gmail.com -d dev.exelander.fr --redirect
+  when: not letsencrypt_cert.stat.exists

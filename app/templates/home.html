@@ -4,5 +4,27 @@
 
 {% block content %}
 <h2>Home Page</h2>
-<p>Bienvenu*e, {{ email }}!</p>
+<div>
+    <p>Bonjour {{ account[0]['prenom'] }} {{ account[0]['nom'] }}, voici votre planning de formations:</p>
+    <table>
+        {% for row in account %}
+        <tr>
+            <td rowspan="3"><a href="{{ url_for('formation', Id_Formation=row['Id_Formation']) }}"><i class="fas fa-address-book fa-5x"></i></a></td>
+            <td>Date de début</td>
+            <td>{{ row['Date_debut'].strftime("%d/%m/%Y") }}</td>
+        </tr>
+        <tr>
+            <td>Date de fin</td>
+            <td>{{ row['Date_fin'].strftime("%d/%m/%Y") }}</td>
+        </tr>
+        <tr>
+            <td>Intitulé</td>
+            <td>{{ row['Intitule'] }}</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
 {% endblock %}

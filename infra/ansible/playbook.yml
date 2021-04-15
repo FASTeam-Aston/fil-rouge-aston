@@ -32,4 +32,4 @@
       include_tasks: ./app_directory.yaml
 
     - name: Execute docker-compose
-      command: docker-compose -f /home/adminsys/docker/docker-compose.yml up -d
+      command: docker-compose -f /home/adminsys/docker/docker-compose.yml up --build -d

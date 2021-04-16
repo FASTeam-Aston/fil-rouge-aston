@@ -70,6 +70,22 @@ def home():
     # User is not loggedin redirect to login page
     return redirect(url_for('login'))
 
+# http://localhost:5000/formation - this will be the home page, only accessible for loggedin users
+@app.route('/formation/<Id_Formation>')
+def formation(Id_Formation):
+    # Check if user is loggedin
+    if 'loggedin' in session:
+        # We need all the account info for the user so we can display it on the home page
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute('SELECT FORMATION.Intitule, PRESENCE.*, ELEVE.* FROM PRESENCE, ELEVE, FORMATION '
+                       'WHERE PRESENCE.Id_Eleve = ELEVE.Id_Eleve AND FORMATION.Id_Formation = PRESENCE.Id_Formation '
+                       'AND PRESENCE.Id_Formation = %s',
+                       Id_Formation)
+        account = cursor.fetchall()
+        return render_template('formation.html', account=account)
+    # User is not loggedin redirect to login page
+    return redirect(url_for('login'))
+
 # http://localhost:5000/profile - this will be the profile page, only accessible for loggedin users
 @app.route('/profile')
 def profile():

@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block title %}Formation{% endblock %}
+
+{% block content %}
+<h2>Présentiel Formation - {{ account[0]['Intitule'] }} du {{ account[0]['Date_Formation'].strftime("%d/%m/%Y") }}</h2>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <td>Present?</td>
+            <td>Nom</td>
+            <td>Prenom</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for row in account %}
+        <tr>
+            <td align="center"><input type="checkbox" {% if row['Id_Statut'] == True %}checked>{% endif %}</td>
+            <td>{{ row['Nom'] }}</td>
+            <td>{{ row['Prenom'] }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        <tr>
+            <td colspan="3" align="center"><i class="fas fa-paper-plane fa-3x"></i></td>
+        </tr>
+    </table>
+</div>
+{% endblock %}

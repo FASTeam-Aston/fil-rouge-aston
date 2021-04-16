@@ -1,3 +1,5 @@
 wheel
 Flask
 flask-mysqldb
+azure-storage-blob
+logstash_formatter

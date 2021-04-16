@@ -4,3 +4,40 @@
     name: apache2
     state: latest
     update_cache: yes
+
+- name: enabled mod rewrite
+  apache2_module:
+    state: present
+    name: rewrite
+    force: True
+
+- name: enabled mod proxy
+  apache2_module:
+    state: present
+    name: proxy
+    force: True
+
+- name: enabled mod proxy_http
+  apache2_module:
+    state: present
+    name: proxy_http
+    force: True
+
+- name: enabled mod SSL
+  apache2_module:
+    state: present
+    name: ssl
+    force: True
+
+- name: Add Apache vhost
+  template:
+    src: "./apache/vhost.conf.j2"
+    dest: "/etc/apache2/sites-available/{{ http_conf }}"
+
+- name: a2ensite {{ http_conf }}
+  command: a2ensite {{ http_conf }}
+
+- name: restart apache2
+  service:
+    name: apache2
+    state: restarted

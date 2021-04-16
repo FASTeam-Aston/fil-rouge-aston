@@ -1,11 +1,14 @@
 ---
 - hosts: all
   become: true
+  gather_facts: no
   vars_files:
-      - ./vars.yml
+      - ./vars/users.yml
+      - ./vars/credentials.yml
+      - ./vars/default.yml
 
   tasks:
-    - name: add users #(passwords to vaults)
+    - name: add users
       user:
         name: "{{ item.name }}"
         password: "{{ item.password | password_hash('sha512') }}"
@@ -29,3 +32,6 @@
 
     - name: Install app directory
       include_tasks: ./app_directory.yaml
+
+    - name: Execute docker-compose
+      command: docker-compose -f /home/adminsys/docker/docker-compose.yml up --build -d

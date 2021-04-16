@@ -21,7 +21,7 @@ services:
 
   pma:
     hostname: pma
-    image: aderesnes/app:phpmyadmin
+    image: phpmyadmin
     restart: always
     links:
       - db:mysql
@@ -30,20 +30,19 @@ services:
     ports:
       - 8081:80
     environment:
-      MYSQL_DATABASE: areyouhere
+      MYSQL_ROOT_PASSWORD: "{{ MysqlRootPassword }}"
       MYSQL_USER: pma
-      MYSQL_PASSWORD: aka47-Pma
-      MYSQL_USERNAME: root
-      MYSQL_ROOT_PASSWORD: aka47-Adminsys
+      MYSQL_PASSWORD: "{{ MySqlPmaPassword }}"
     networks:
       - app_network
 
   db:
     hostname: mysql
-    image: aderesnes/app:mysql5.6
+    image: mysql:5.6
+    command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: aka47-Adminsys
+      MYSQL_ROOT_PASSWORD: "{{ MysqlRootPassword }}"
     volumes:
       - /var/log/mysql-db:/var/log/mysql
       - /var/lib/mysql:/var/lib/mysql

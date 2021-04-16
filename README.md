@@ -37,3 +37,4 @@ sudo apt install apache2
 `cd <app_folder>`
 `python3 -m venv venv`
 
+https://www.digitalocean.com/community/tutorials/how-to-use-ansible-to-install-and-set-up-apache-on-ubuntu-18-04

@@ -6,5 +6,5 @@
 
 - name: Add App Directories for Docker-Compose 2/2
   copy:
-    src: ../../Dev
+    src: ../../app
     dest: /home/adminsys/docker

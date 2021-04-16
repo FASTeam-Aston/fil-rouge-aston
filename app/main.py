@@ -1,16 +1,13 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from flask_mysqldb import MySQL
+#from logstash_async.handler import AsynchronousLogstashHandler
+#from logstash_async.formatter import FlaskLogstashFormatter
 import MySQLdb.cursors
 
 app = Flask(__name__)
 
-app.secret_key = 'la vie est un long fleuve tranquille'
-
-# Entrez les détails de votre connexion à la base de données ci-dessous
-app.config['MYSQL_HOST'] = 'db'
-app.config['MYSQL_USER'] = 'areyouhere'
-app.config['MYSQL_PASSWORD'] = 'aka47-areyouhere'
-app.config['MYSQL_DB'] = 'areyouhere'
+app.secret_key = 'la vie est un trop long fleuve tranquille'
+app.config.from_object('config')
 
 # Intialize MySQL
 mysql = MySQL(app)
@@ -62,8 +59,30 @@ def logout():
 def home():
     # Check if user is loggedin
     if 'loggedin' in session:
-        # User is loggedin show them the home page
-        return render_template('home.html', email=session['email'])
+        # We need all the account info for the user so we can display it on the home page
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute('SELECT FORMATEUR.*, FORMATION.* FROM FORMATEUR, FORMATION '
+                       'WHERE FORMATION.Id_Formateur = FORMATEUR.Id_Formateur AND FORMATEUR.Id_Formateur = %s '
+                       'ORDER BY FORMATION.Date_debut',
+                       (session['Id_Formateur'],))
+        account = cursor.fetchall()
+        return render_template('home.html', account=account)
+    # User is not loggedin redirect to login page
+    return redirect(url_for('login'))
+
+# http://localhost:5000/formation - this will be the home page, only accessible for loggedin users
+@app.route('/formation/<Id_Formation>')
+def formation(Id_Formation):
+    # Check if user is loggedin
+    if 'loggedin' in session:
+        # We need all the account info for the user so we can display it on the home page
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute('SELECT FORMATION.Intitule, PRESENCE.*, ELEVE.* FROM PRESENCE, ELEVE, FORMATION '
+                       'WHERE PRESENCE.Id_Eleve = ELEVE.Id_Eleve AND FORMATION.Id_Formation = PRESENCE.Id_Formation '
+                       'AND PRESENCE.Id_Formation = %s',
+                       Id_Formation)
+        account = cursor.fetchall()
+        return render_template('formation.html', account=account)
     # User is not loggedin redirect to login page
     return redirect(url_for('login'))
 
@@ -85,25 +104,25 @@ def profile():
 def Student_attendance_chart():
     return render_template('Student_attendance_chart.html')
 
-
+#table of students
 @app.route('/user')
 def user_attendance_chart():
     allUser = [
         {
-            "firstname": "Ford",
-            "lastname": "Mustang",
+            "firstname": "Test1",
+            "lastname": "lastname1",
         },
         {
-            "firstname": "Ford",
-            "lastname": "Mustang",
+            "firstname": "Test2",
+            "lastname": "lastname2",
         },
         {
-            "firstname": "Ford",
-            "lastname": "Mustang",
+            "firstname": "Test3",
+            "lastname": "lastname3",
         },
         {
-            "firstname": "Ford",
-            "lastname": "Mustang",
+            "firstname": "Test4",
+            "lastname": "lastname4",
         }
     ]
     return render_template('user.html', users=allUser, len=len(allUser))

@@ -5,6 +5,12 @@
     state: latest
     update_cache: yes
 
+- name: Check hostname
+  command: hostname
+  register: var_hostname
+
+- debug: msg="{{ var_hostname.stdout }}"
+
 - name: Check if certificate already exists.
   stat:
     path: /etc/letsencrypt/live/{{ http_host }}/cert.pem
@@ -12,4 +18,4 @@
 
 - name: Generate new certificate if one doesn't exist.
   command: certbot run --apache --noninteractive --agree-tos --email "{{ domain_email }}" -d "{{ http_host }}" --redirect
-  when: not letsencrypt_cert.stat.exists
+  when: not letsencrypt_cert.stat.exists and var_hostname.stdout == "fil-rouge-aston-5"

@@ -9,6 +9,12 @@
     repo: "deb https://download.docker.com/linux/ubuntu focal stable"
     state: present
 
+- name: Install Docker
+  apt:
+    name: docker
+    state: latest
+    update_cache: yes
+
 - name: Add adminsys to docker group
   user:
     name: adminsys

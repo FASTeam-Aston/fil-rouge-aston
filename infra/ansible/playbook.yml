@@ -3,7 +3,7 @@
   become: true
   gather_facts: no
   vars_files:
-       - ./vars/users.yml
+      - ./vars/users.yml
       - ./vars/credentials.yml
       - ./vars/default.yml
 

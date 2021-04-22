@@ -12,8 +12,6 @@ COPY ./app /home/FlaskApp
 
 RUN ls -l /home/FlaskApp
 
-WORKDIR ./docker
-
 COPY ./requirements .
 
 RUN pip3 install -r requirements

@@ -9,8 +9,9 @@ RUN apt-get update && apt-get -y install \
    iputils-ping
 
 COPY ./app /home/FlaskApp
-COPY ./requirements /home/FlaskApp
 
-RUN pip3 install -r requirements
+COPY ./requirements .
+
+RUN pip3 install -r ./requirements
 
 ENTRYPOINT  FLASK_APP=/home/FlaskApp/main.py flask run --host=0.0.0.0

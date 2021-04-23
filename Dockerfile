@@ -9,7 +9,6 @@ RUN apt-get update && apt-get -y install \
    iputils-ping
 
 COPY ./app /home/FlaskApp
-COPY requirements /home/FlaskApp
 
 RUN pip3 install -r requirements
 

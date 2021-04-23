@@ -10,7 +10,7 @@ RUN apt-get update && apt-get -y install \
 
 COPY ./app /home/FlaskApp
 
-RUN ls -l /home/FlaskApp
+#RUN ls -l /home/FlaskApp
 
 COPY ./requirements .
 

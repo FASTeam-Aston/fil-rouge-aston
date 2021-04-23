@@ -3,35 +3,27 @@
   become: true
   gather_facts: no
   vars_files:
-      - ./vars/users.yml
-      - ./vars/credentials.yml
-      - ./vars/default.yml
+  #    - ./vars/users.yml
+      - ./roles/vars/credentials.yml
+      - ./roles/vars/default.yml
+      - ./roles/group_vars/all/variables.yml
 
   tasks:
-    - name: add users
-      user:
-        name: "{{ item.name }}"
-        password: "{{ item.password | password_hash('sha512') }}"
-        state: present
-      with_items: "{{ user_details }}"
-
-    - name: Install required system packages
-      apt:
-        name: ['apt-transport-https','ca-certificates','curl','software-properties-common','python3-pip']
-        state: latest
-        update_cache: yes
-
-    - name: Docker Install
-      include_tasks: ./docker.yaml
+ #   - name: add users
+ #     user:
+ #       name: "{{ item.name }}"
+ #       password: "{{ item.password | password_hash('sha512') }}"
+ #       state: present
+ #     with_items: "{{ user_details }}"
 
     - name: Apache Install
-      include_tasks: ./apache2.yaml
+      include_tasks: ./roles/apache2.yaml
 
-    - name: Certbot Install
-      include_tasks: ./certbot.yaml
+#    - name: Certbot Install
+#      include_tasks: ./roles/certbot.yaml
 
-    - name: Install app directory
-      include_tasks: ./app_directory.yaml
+    - name: Copy directory and files
+      include_tasks: ./roles/app_directory.yaml
 
     - name: Execute docker-compose
-      command: docker-compose -f /home/adminsys/docker/docker-compose.yml up --build -d
+      command: docker-compose -f /home/ubuntu/project/docker-compose.yml up --build -d

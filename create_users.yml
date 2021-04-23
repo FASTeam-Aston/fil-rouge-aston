@@ -1,0 +1,12 @@
+---
+- hosts: all
+  become: true
+  gather_facts: no
+
+  tasks:
+    - name: add users
+      user:
+        name: "{{ item.name }}"
+        password: "{{ item.password | password_hash('sha512') }}"
+        state: present
+      with_items: "{{ user_details }}"

@@ -22,7 +22,7 @@
 
     - name: Add adminsys to docker group
       user:
-        name: adminsys
+        name: ubuntu
         groups: docker, sudo, adminsys
         append: yes
 

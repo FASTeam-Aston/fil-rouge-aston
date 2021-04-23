@@ -19,8 +19,8 @@
     - name: Apache Install
       include_tasks: ./roles/apache2.yaml
 
-#    - name: Certbot Install
-#      include_tasks: ./roles/certbot.yaml
+    - name: Certbot Install
+      include_tasks: ./roles/certbot.yaml
 
     - name: Copy directory and files
       include_tasks: ./roles/app_directory.yaml

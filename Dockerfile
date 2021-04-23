@@ -8,9 +8,7 @@ RUN apt-get update && apt-get -y install \
    python3-mysqldb \
    iputils-ping
 
-COPY ./* /home/FlaskApp/
-
-COPY requirements .
+COPY ./app /home/FlaskApp
 
 RUN pip3 install -r requirements
 

@@ -10,7 +10,7 @@ RUN apt-get update && apt-get -y install \
 
 COPY ./* /home/FlaskApp/
 
-COPY ../requirements .
+COPY requirements .
 
 RUN pip3 install -r requirements
 

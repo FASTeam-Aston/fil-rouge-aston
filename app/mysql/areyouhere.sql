@@ -24,10 +24,6 @@ SET time_zone = "+00:00";
 -- CREATE DATABASE IF NOT EXISTS `areyouhere` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `areyouhere`;
 
--- CREATE USER 'areyouhere'@'%' IDENTIFIED BY 'aka47-areyouhere';
---- GRANT SELECT, INSERT, UPDATE, DELETE, FILE ON *.* TO 'areyouhere'@'%' REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;
--- GRANT ALL PRIVILEGES ON `areyouhere`.* TO 'areyouhere'@'%';
-
 -- --------------------------------------------------------
 
 --

@@ -18,4 +18,4 @@
 
 - name: Generate new certificate if one doesn't exist.
   command: certbot run --apache --noninteractive --agree-tos --email "{{ domain_email }}" -d "{{ http_host }}" --redirect
-  when: not letsencrypt_cert.stat.exists and var_hostname.stdout == "fil-rouge-aston-5"
+  when: not letsencrypt_cert.stat.exists and var_hostname.stdout == "aston-awx-remote-15"

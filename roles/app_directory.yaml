@@ -1,0 +1,10 @@
+---
+- name: Add App directory
+  copy:
+    src: ./app
+    dest: /home/ubuntu/project
+
+- name: Add Docker-Compose File
+  copy:
+    src: ./docker-compose.yml
+    dest: /home/ubuntu/project

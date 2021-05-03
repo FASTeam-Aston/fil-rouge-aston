@@ -1,4 +1,4 @@
 ---
-http_host: "test-app.exelander.fr"
-http_conf: "test-app.exelander.fr.conf"
+http_host: "app.exelander.fr"
+http_conf: "app.exelander.fr.conf"
 domain_email: "alexandre.deresnes@social.aston-ecole.com"

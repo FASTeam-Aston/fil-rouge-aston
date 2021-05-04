@@ -20,10 +20,7 @@ SET time_zone = "+00:00";
 
 --
 -- Base de données : `areyouhere`
---
--- CREATE DATABASE IF NOT EXISTS `areyouhere` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `areyouhere`;
-
 -- --------------------------------------------------------
 
 --

@@ -1,7 +1,11 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from flask_mysqldb import MySQL
-#from logstash_async.handler import AsynchronousLogstashHandler
-#from logstash_async.formatter import FlaskLogstashFormatter
+#logstash
+
+from logstash_async.handler import AsynchronousLogstashHandler
+from logstash_async.formatter import FlaskLogstashFormatter
+
+
 import MySQLdb.cursors
 
 app = Flask(__name__)

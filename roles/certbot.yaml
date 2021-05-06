@@ -3,7 +3,7 @@
   apt:
     name: ['certbot','python3-certbot-apache']
     state: latest
-    update_cache: yes
+    update_cache: no
 
 - name: Check hostname
   command: hostname
